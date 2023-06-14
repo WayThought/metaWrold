@@ -4,14 +4,9 @@
     <router-view></router-view>
     <!-- <router-link to="/">mine</router-link> -->
   </div>
-  <!-- <PcApp v-if="isPc"/>
-  <MobileApp v-else/> -->
 </template>
 
 <script>
-// import MobileApp from './components/MobileApp.vue';
-// import PcApp from './components/PcApp.vue';
-
 
 export default {
   name: 'app',

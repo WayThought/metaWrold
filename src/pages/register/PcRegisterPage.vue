@@ -3,18 +3,39 @@
         <div class="bgImageContainer">
             <div class="content wrapper_01">
                 <img class="tip" src="../../assets/pc_register_tip.png" alt="tip">
-                <div class="registerContent"></div>
+                <div class="registerContent">
+                  
+                  <el-input
+                    v-model="input2"
+                    class="w-50 m-2"
+                    placeholder="Type something"
+                    prefix-icon="el-icon-search"
+                    >
+                  </el-input>
+                </div>
             </div>
         </div>
     </div>
 </template>
   
   <script>
+  // import { Search } from '@element-plus/icons-vue'
+
   export default {
+    data() {
+      return {
+        input: "",
+        input2: "",
+        input4: ""
+      }
+    },
     name: 'PcRegisterPage',
     props: {
       title: String,
       desc: String
+    },
+    components: {
+
     }
   }
   </script>
