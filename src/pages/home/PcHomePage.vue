@@ -452,12 +452,12 @@ export default {
 }
 
 .download_ios {
-    top: 580px;
+    top: 500px;
     background-image: url(../../assets/icon_download_ios.png);
 }
 
 .download_android {
-    top: 660px;
+    top: 580px;
     background-image: url(../../assets/icon_download_android.png);
 }
 </style>
