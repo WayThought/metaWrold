@@ -1,6 +1,7 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import PcHomePage from '../pages/home/PcHomePage'
 import PcRegisterPage from '../pages/register/PcRegisterPage'
+import PcLoginPage from '../pages/login/PcLoginPage'
 
 const routes = [
     { 
@@ -13,6 +14,11 @@ const routes = [
         name: 'pcregister',
         component: PcRegisterPage
     },
+    { 
+        path: '/pclogin', 
+        name: 'pclogin',
+        component: PcLoginPage
+    }
 ]
 
 const router = createRouter({
