@@ -7,7 +7,7 @@
           <div class="logo"></div>
           <div class="title">Register</div>
           <el-input 
-          v-model="input" 
+          v-model="account" 
           class="email-input input-view"
           placeholder="Email Address">
             <template #prefix>
@@ -15,15 +15,16 @@
             </template>
           </el-input>
           <el-input 
-          v-model="input" 
+          v-model="password" 
           class="password-input input-view"
+          v-bind="password"
           placeholder="Please enter the password">
             <template #prefix>
               <el-icon size="20" class="el-input__icon"><lock /></el-icon>
             </template>
           </el-input>
           <el-input 
-          v-model="input" 
+          v-model="confirmpassword" 
           class="password-confirm-input input-view"
           placeholder="Confirm Password">
             <template #prefix>
@@ -32,14 +33,14 @@
           </el-input>
           <div class="invitation-code">Invitation code (optional)</div>
           <el-input 
-          v-model="input" 
+          v-model="invitationcode" 
           class="invitation-code-input input-view"
           placeholder="Enter invitation code">
             <template #prefix>
               <el-icon size="20" class="el-input__icon"><Present /></el-icon>
             </template>
           </el-input>
-          <button class="confirm">Register</button>
+          <button class="confirm" @click="login">Register</button>
           <button class="turn-login">Log on</button>
         </div>
       </div>
@@ -48,16 +49,25 @@
 </template>
   
 <script>
+
 export default {
   data() {
     return {
-      input: ""
+      account: "",
+      password: "",
+      confirmpassword: "",
+      invitationcode: ""
     }
   },
   name: 'PcRegisterPage',
   props: {
     title: String,
     desc: String
+  },
+  methods: {
+    login() {
+      
+    }
   },
   components: {
 

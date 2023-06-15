@@ -7,7 +7,7 @@
             <div class="logo"></div>
             <div class="title">Log on</div>
             <el-input 
-            v-model="input" 
+            v-model="account" 
             class="email-input input-view"
             placeholder="Please enter an account">
               <template #prefix>
@@ -15,14 +15,14 @@
               </template>
             </el-input>
             <el-input 
-            v-model="input" 
+            v-model="password" 
             class="password-input input-view"
             placeholder="Please enter the password">
               <template #prefix>
                 <el-icon size="20" class="el-input__icon"><lock /></el-icon>
               </template>
             </el-input>
-            <button class="confirm">Log on</button>
+            <button class="confirm" @click="login">Log on</button>
             <div class="bottomContent">
                 <button class="forget-password">forgot password？</button>
                 <button class="turn-register">Register</button>
@@ -34,16 +34,48 @@
   </template>
     
   <script>
+
+  import axios from 'axios';
+
   export default {
     data() {
       return {
-        input: ""
+        account: "98903@163.com",
+        password: "123456",
       }
     },
     name: 'PcLoginPage',
     props: {
       title: String,
       desc: String
+    },
+    methods: {
+        login() {
+            axios.post('http://172.16.105.59:3000/api/auth/login', {
+                email: this.account,
+                password: this.password
+            })
+            .then((response) => {
+                this.getUserInfo(response.data.data.accessToken)
+            })
+            .catch((error) => {
+                console.log("===>" + error);
+            });
+        },
+        getUserInfo(token) {
+            axios.get('http://172.16.105.59:3000/api/user/userInfo', {
+                headers: {
+                    Authorization: ("Bearer " + token),
+                }
+            })
+            .then(function (response) {
+                console.log(response.data.data);
+            })
+            .catch(function (error) {
+                console.log("===>" + error);
+            });
+
+        }
     },
     components: {
   
