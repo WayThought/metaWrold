@@ -10,10 +10,17 @@
                     <img class="discord" src="../../assets/icon_discord.png" alt="logo">
                     <img class="facebook" src="../../assets/icon_facebook.png" alt="logo">
                     <span class="language">language/语言</span>
-                    <router-link to="/pcregister" key="pcregister">
-                        <button class="register">Register</button>
-                    </router-link>
-                    <button class="login">Log on</button>
+                    <template v-if="isLogin === false">
+                        <router-link to="/pcregister" key="pcregister">
+                            <button class="register">Register</button>
+                        </router-link>
+                        <router-link to="/pclogin" key="pclogin">
+                            <button class="login">Login</button>
+                        </router-link>
+                    </template>
+                    <template v-if="isLogin === true">
+                        <button class="login" @click="logout">{{ nickname }}</button>
+                    </template>
                 </div>
             </div>
         </div>
@@ -82,9 +89,34 @@ export default {
     props: {
         msg: String
     },
+    data() {
+        return {
+            isLogin: false,
+            nickname: ''
+        }
+    },
+    created() {
+        const hasLogin = this.auth.hasLogin()
+        const userInfo = this.auth.user()
+        if (hasLogin && userInfo) {
+            const nickname = userInfo.nickname
+            this.isLogin = hasLogin
+            this.nickname = nickname
+        } else {
+            this.isLogin = false
+            this.nickname = 'Login'
+        }
+    },
     components: {
         PcStepItem
     },
+    methods: {
+        logout() {
+            this.auth.logout()
+            this.isLogin = false
+            this.nickname = ''
+        }
+    }
 }
 </script>
   
