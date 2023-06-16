@@ -233,6 +233,9 @@ export default {
     border: none;
     background-color: transparent;
 }
+.header .headerContainer .buy:hover {
+    background-image: url("../../assets/icon_buy_ani.gif");
+}
 
 .header .headerContainer .bottomDesc {
     display: block;
