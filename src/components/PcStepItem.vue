@@ -9,7 +9,7 @@
   
   <script>
   export default {
-    name: 'PcRegister',
+    name: 'PcStepItem',
     props: {
       title: String,
       desc: String

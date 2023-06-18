@@ -1,23 +1,23 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import PcHomePage from '../pages/home/PcHomePage'
-import PcRegisterPage from '../pages/register/PcRegisterPage'
-import PcLoginPage from '../pages/login/PcLoginPage'
+import HomePage from '../pages/home/HomePage'
+import RegisterPage from '../pages/register/RegisterPage'
+import LoginPage from '../pages/login/LoginPage'
 
 const routes = [
     { 
         path: '/', 
-        name: 'pchome',
-        component: PcHomePage
+        name: 'home',
+        component: HomePage
     },
     { 
-        path: '/pcregister', 
-        name: 'pcregister',
-        component: PcRegisterPage
+        path: '/register', 
+        name: 'register',
+        component: RegisterPage
     },
     { 
-        path: '/pclogin', 
-        name: 'pclogin',
-        component: PcLoginPage
+        path: '/login', 
+        name: 'login',
+        component: LoginPage
     }
 ]
 

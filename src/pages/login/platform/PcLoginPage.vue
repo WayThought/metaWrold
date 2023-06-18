@@ -2,7 +2,7 @@
   <div class="container">
     <div class="bgImageContainer">
       <div class="content wrapper_01">
-        <img class="tip" src="../../assets/pc_register_tip.png" alt="tip">
+        <img class="tip" src="@/assets/pc_register_tip.png" alt="tip">
         <div class="registerContent">
           <div class="logo"></div>
           <div class="title">Log on</div>
@@ -32,7 +32,7 @@
 </template>
     
 <script>
-import router from '../../router/router'
+import router from '@/router/router'
 export default {
   data() {
     return {
@@ -86,7 +86,7 @@ export default {
 .bgImageContainer {
   width: 100%;
   height: 1080px;
-  background-image: URL("../../assets/pc_login_bg.png");
+  background-image: URL("../../../assets/pc_login_bg.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -120,7 +120,7 @@ export default {
 }
 
 .registerContent .logo {
-  background-image: url(../../assets/icon_register_logo.png);
+  background-image: url(../../../assets/icon_register_logo.png);
   width: 58px;
   height: 47px;
   margin: 0 auto;
@@ -152,17 +152,6 @@ export default {
   margin-top: 20px;
 }
 
-.invitation-code {
-  margin-top: 23px;
-  font-size: 18px;
-  font-weight: 900;
-  text-align: left;
-}
-
-.invitation-code-input {
-  margin-top: 8px;
-}
-
 .el-input__icon {
   color: #000000;
   vertical-align: middle;
@@ -172,7 +161,7 @@ export default {
   margin-top: 30px;
   width: 307px;
   height: 48px;
-  background-image: url(../../assets/icon_register_button.png);
+  background-image: url(../../../assets/icon_register_button.png);
   font-size: 18px;
   font-weight: bold;
   color: white;

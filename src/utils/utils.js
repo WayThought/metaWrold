@@ -1,7 +1,17 @@
-export default function stringIsNotEmpty(str) {
-    if (str != "" && str != null && str != undefined) {
-        return true
-    } else {
-        return false
+
+
+const utils = {
+    isMobine() { 
+        if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
+          return true
+        } else {
+          return false
+        }
     }
 }
+
+let install = function (app) {
+    app.config.globalProperties.utils = utils
+}
+
+export default install

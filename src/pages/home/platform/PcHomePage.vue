@@ -3,18 +3,18 @@
         <div class="nav">
             <div class="navBar wrapper_01">
                 <div class="leftNavBar">
-                    <img class="leftNavBarMtIcon" src="../../assets/mtIcon.png" alt="logo">
+                    <img class="leftNavBarMtIcon" src="@/assets/mtIcon.png" alt="logo">
                 </div>
                 <div class="rightNavBar">
-                    <img class="twitter" src="../../assets/icon_twitter.png" alt="logo">
-                    <img class="discord" src="../../assets/icon_discord.png" alt="logo">
-                    <img class="facebook" src="../../assets/icon_facebook.png" alt="logo">
+                    <img class="twitter" src="@/assets/icon_twitter.png" alt="logo">
+                    <img class="discord" src="@/assets/icon_discord.png" alt="logo">
+                    <img class="facebook" src="@/assets/icon_facebook.png" alt="logo">
                     <span class="language">language/语言</span>
                     <template v-if="isLogin === false">
-                        <router-link to="/pcregister" key="pcregister">
+                        <router-link to="/register" key="register">
                             <button class="register">Register</button>
                         </router-link>
-                        <router-link to="/pclogin" key="pclogin">
+                        <router-link to="/login" key="login">
                             <button class="login">Login</button>
                         </router-link>
                     </template>
@@ -26,11 +26,11 @@
         </div>
         <div class="header">
             <div class="headerContainer wrapper_01">
-                <img class="titleImage" src="../../assets/icon_title.png" alt="title">
+                <img class="titleImage" src="@/assets/icon_title.png" alt="title">
                 <div class="titleDesc">Founder</div>
                 <div class="ntfDesc">Buy NFT to participate in the first test</div>
-                <img class="nftTitleWin" src="../../assets/icon_win.png" alt="win">
-                <img class="nftTitleUsdt" src="../../assets/icon_usdt.png" alt="usdt">
+                <img class="nftTitleWin" src="@/assets/icon_win.png" alt="win">
+                <img class="nftTitleUsdt" src="@/assets/icon_usdt.png" alt="usdt">
                 <button class="buy">BUT NFT</button>
                 <div class="bottomDesc">
                     <span class="title">First test instructions</span>
@@ -41,10 +41,10 @@
                 </div>
 
                 <div class="ufoContainer">
-                    <img class="headerUfo" src="../../assets/icon_ufo.png" alt="headerUfo">
-                    <img class="headerStar first show" src="../../assets/icon_star.png" alt="headerStar">
-                    <img class="headerStar second" src="../../assets/icon_star.png" alt="headerStar">
-                    <img class="headerStar third" src="../../assets/icon_star.png" alt="headerStar">
+                    <img class="headerUfo" src="@/assets/icon_ufo.png" alt="headerUfo">
+                    <img class="headerStar first show" src="@/assets/icon_star.png" alt="headerStar">
+                    <img class="headerStar second" src="@/assets/icon_star.png" alt="headerStar">
+                    <img class="headerStar third" src="@/assets/icon_star.png" alt="headerStar">
                 </div>
             </div>
         </div>
@@ -52,7 +52,7 @@
         <div class="middle">
             <div class="middleContainer wrapper_01">
                 <div class="textContainer">
-                    <img class="airplane" src="../../assets/icon_airplane.png" alt="">
+                    <img class="airplane" src="@/assets/icon_airplane.png" alt="">
                     <span class="title">A Web3.0 Metaverse Blockchain Game</span>
                     <span class="subTitle">In the world of Genesis Monopoly, you will use unique NFT characters to earn
                         coins and use your strategies to win in board games to obtain our virtual token F. You can use F
@@ -62,7 +62,7 @@
                         blockchain metaverse world where players can earn profits through the game</span>
                 </div>
                 <div class="stepContainer">
-                    <img class="line" src="../../assets/bg_line.png" alt="线">
+                    <img class="line" src="@/assets/bg_line.png" alt="线">
                     <div class="stepRadioItem">1</div>
                     <div class="stepRadioItem second">2</div>
                     <div class="stepRadioItem third">3</div>
@@ -82,7 +82,7 @@
 </template>
   
 <script>
-import PcStepItem from '../../components/PcStepItem.vue';
+import PcStepItem from '@/components/PcStepItem.vue';
 
 export default {
     name: 'PcHomePage',
@@ -175,12 +175,12 @@ export default {
 
 .navBar .rightNavBar .register {
     margin-top: 10px;
-    width: 79px;
-    height: 28px;
+    width: 80px;
+    height: 30px;
     font-size: 14px;
     color: white;
     text-align: center;
-    background-image: url("../../assets/icon_register.png");
+    background-image: url("../../../assets/icon_register.png");
     background-repeat: no-repeat;
     background-position: center;
     border: none;
@@ -193,7 +193,7 @@ export default {
     height: 28px;
     font-size: 14px;
     color: white;
-    background-image: url("../../assets/icon_login.png");
+    background-image: url("../../../assets/icon_login.png");
     background-repeat: no-repeat;
     background-position: center;
     border: none;
@@ -212,7 +212,7 @@ export default {
 .header {
     width: 100%;
     height: 804px;
-    background-image: URL("../../assets/pcheaderbg.png");
+    background-image: URL("../../../assets/pcheaderbg.png");
     background-repeat: no-repeat;
     background-position: center;
 }
@@ -259,20 +259,21 @@ export default {
     font-weight: bold;
     color: white;
     text-align: center;
-    background-image: url("../../assets/icon_buy.png");
+    background-image: url("../../../assets/icon_buy.png");
     background-repeat: no-repeat;
     background-position: center;
     border: none;
     background-color: transparent;
+    border-radius: 30px;
 }
 .header .headerContainer .buy:hover {
-    background-image: url("../../assets/icon_buy_ani.gif");
+    background-image: url("../../../assets/icon_buy_ani.gif");
 }
 
 .header .headerContainer .bottomDesc {
     display: block;
     margin-top: 230px;
-    background-image: url("../../assets/bg_header_desc.png");
+    background-image: url("../../../assets/bg_header_desc.png");
     background-repeat: no-repeat;
     background-position: center;
     width: 1200px;
@@ -382,7 +383,7 @@ export default {
 .middle {
     width: 100%;
     height: 804px;
-    background-image: URL("../../assets/pcmidbg.png");
+    background-image: URL("../../../assets/pcmidbg.png");
     background-repeat: no-repeat;
     background-position: center;
 }
@@ -488,12 +489,12 @@ export default {
 
 .download_ios {
     top: 500px;
-    background-image: url(../../assets/icon_download_ios.png);
+    background-image: url(../../../assets/icon_download_ios.png);
 }
 
 .download_android {
     top: 580px;
-    background-image: url(../../assets/icon_download_android.png);
+    background-image: url(../../../assets/icon_download_android.png);
 }
 </style>
   
