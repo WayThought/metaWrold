@@ -6,6 +6,7 @@ const utils = {
           return false
         }
     }
+
 }
 
 let install = function (app) {

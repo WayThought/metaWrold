@@ -17,6 +17,7 @@ app.use(VueAxios, axios)
 app.use(store)
 app.use(auth)
 app.use(utils)
+app.config.globalProperties.$isEnglish = false
 
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
     app.component(key, component)

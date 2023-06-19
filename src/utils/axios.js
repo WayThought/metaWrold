@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-axios.defaults.baseURL = 'http://172.16.104.246:3000'
+axios.defaults.baseURL = 'http://62.234.164.238:3000'
 axios.defaults.timeout = 10000
 
 axios.interceptors.request.use(
