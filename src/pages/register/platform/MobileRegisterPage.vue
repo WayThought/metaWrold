@@ -57,7 +57,7 @@
             </template>
           </el-input>
           <button class="confirm" @click="register">{{ registerDesc }}</button>
-          <button class="turn-login" @click="turnLogin">{{ loginDesc }}}</button>
+          <button class="turn-login" @click="turnLogin">{{ loginDesc }}</button>
       </div>
     </div>
   </div>
