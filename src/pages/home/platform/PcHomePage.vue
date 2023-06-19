@@ -55,6 +55,7 @@
             <div class="middleContainer wrapper_01">
                 <div class="textContainer">
                     <img class="airplane" src="@/assets/icon_airplane.png" alt="">
+                    <img class="ufo" src="@/assets/right_ufo.gif" alt="">
                     <span class="title">A Web3.0 Metaverse Blockchain Game</span>
                     <span class="subTitle">In the world of Genesis Monopoly, you will use unique NFT characters to earn
                         coins and use your strategies to win in board games to obtain our virtual token F. You can use F
@@ -403,6 +404,11 @@ export default {
     position: absolute;
     left: -150px;
     top: 100px
+}
+.middle .middleContainer .textContainer .ufo {
+    position: absolute;
+    left: 450px;
+    top: 80px
 }
 
 .middle .middleContainer .textContainer .title {

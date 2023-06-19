@@ -80,9 +80,9 @@ export default {
   
 <style scoped>
     .container {
-        width: 100%;
+        width: 100vw;
         background-color: #05000F;
-        height: 844px;
+        height: 100vh;
     }
 
     .bgImageContainer {
@@ -93,7 +93,6 @@ export default {
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
-        background-attachment: fixed;
     }
 
     .content {
