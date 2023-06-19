@@ -57,13 +57,9 @@
                     <span class="subTitle">{{ text6 }}</span>
                 </div>
                 <div class="stepContainer">
-                    <img class="line" src="@/assets/bg_line.png" alt="线">
-                    <div class="stepRadioItem">1</div>
-                    <div class="stepRadioItem second">2</div>
-                    <div class="stepRadioItem third">3</div>
-                    <PcStepItem class="step1" title="第一步" :desc="text7" />
-                    <PcStepItem class="step2" title="第二步" :desc="text8" />
-                    <PcStepItem class="step3" title="第三步" :desc="text9" />
+                    <PcStepItem class="step1" number="1" title="第一步" :desc="text7" />
+                    <PcStepItem class="step2" number="2" title="第二步" :desc="text8" />
+                    <PcStepItem class="step3" number="3" title="第三步" :desc="text9" />
                 </div>
             </div>
         </div>
@@ -456,43 +452,16 @@ export default {
 
 }
 
-.middle .middleContainer .stepContainer .line {
-    position: absolute;
-    left: 0;
-    top: 0;
-}
-
-.middle .middleContainer .stepContainer .stepRadioItem {
-    position: absolute;
-    background-color: #4C62FB;
-    color: white;
-    font-size: 14px;
-    width: 24px;
-    height: 24px;
-    line-height: 24px;
-    text-align: center;
-    border-radius: 50%;
-    left: -12px;
-}
-
-.middle .middleContainer .stepContainer .second {
-    top: 140px;
-}
-
-.middle .middleContainer .stepContainer .third {
-    top: 280px;
-}
-
 .step1 {
-    top: 2px;
+    margin-top: 20px;
 }
 
 .step2 {
-    top: 55px;
+    margin-top: 45px;
 }
 
 .step3 {
-    top: 125px;
+    margin-top: 45px;
 }
 
 .bottom {

@@ -56,7 +56,7 @@
             </template>
           </el-input>
           <button class="confirm" @click="register">Register</button>
-          <button class="turn-login">Log on</button>
+          <button class="turn-login" @click="turnLogin">Log on</button>
         </div>
       </div>
     </div>
@@ -120,6 +120,9 @@ export default {
             .catch((error) => {
                 console.log(error)
             })
+        },
+        turnLogin() {
+            router.replace({ path: '/login' })
         }
   },
   components: {
@@ -131,7 +134,7 @@ export default {
 <style scoped>
 .container {
   width: 100%;
-  height: 1211px;
+  height: 100vh;
   background-color: #05000F;
 }
 
@@ -142,7 +145,6 @@ export default {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  background-attachment: fixed;
 }
 
 .wrapper_01 {
@@ -237,6 +239,9 @@ export default {
   border: none;
   outline: none;
   background-color: transparent;
+}
+.turn-login:hover {
+    cursor: pointer;
 }
 </style>
   

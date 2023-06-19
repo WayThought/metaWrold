@@ -22,8 +22,8 @@
             </div>
             <img class="title" src="@/assets/icon_title.png" alt="">
             <span class="desc">Founder</span>
-            <div class="buy_desc">{{ text1 }}</div>
         </div>
+        <div class="buy_desc">{{ text1 }}</div>
 
         <div class="buy_number">{{ text2 }}</div>
         <img class="buy_unit" src="@/assets/mobile_home_unit.png" alt="">
@@ -183,17 +183,19 @@ export default {
         font-weight: normal;
         color: #3C6CFB;
     }
-    .header .buy_desc {
-        margin-top: 210px;
+     .buy_desc {
+        position: relative;
+        margin-top: -30px;
         margin-left: 12px;
         margin-right: 12px;
         font-size: 24px;
         font-weight: normal;
         text-align: left;
         color: white;
+        z-index: 1;
     }
     .buy_number {
-        margin-top: 40px;
+        margin-top: 6px;
         margin-left: 12px;    
         font-size: 46px;
         font-weight: bold;
@@ -225,9 +227,6 @@ export default {
         background-color: transparent;
         border-radius: 30px;
     }
-    /* .buy:hover {
-        background-image: url("../../../assets/icon_buy_ani.gif");
-    } */
 
     .instruction {
         display: block;
@@ -240,7 +239,6 @@ export default {
         text-align: center;
         margin: 0 auto;
         margin-top: 20px;
-        /* padding-top: 50px; */
     }
     .instruction .title {
         display: block;

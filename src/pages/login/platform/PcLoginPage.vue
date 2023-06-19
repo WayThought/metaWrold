@@ -23,7 +23,7 @@
           <button class="confirm" @click="login">Log on</button>
           <div class="bottomContent">
             <button class="forget-password">forgot password？</button>
-            <button class="turn-register">Register</button>
+            <button class="turn-register" @click="turnRegister">Register</button>
           </div>
         </div>
       </div>
@@ -39,8 +39,8 @@ import router from '@/router/router'
 export default {
   data() {
     return {
-      account: "98903@163.com",
-      password: "123456",
+      account: "",
+      password: "",
     }
   },
   name: 'PcLoginPage',
@@ -78,6 +78,9 @@ export default {
         //   },
         // }).showToast();
       })
+    },
+    turnRegister() {
+        router.replace({ path: '/register' })
     }
   },
   components: {
@@ -89,7 +92,7 @@ export default {
 <style scoped>
 .container {
   width: 100%;
-  height: 1211px;
+  height: 100vh;
   background-color: #05000F;
 }
 
@@ -100,7 +103,6 @@ export default {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  background-attachment: fixed;
 }
 
 .wrapper_01 {

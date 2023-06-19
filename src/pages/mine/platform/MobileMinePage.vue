@@ -61,7 +61,7 @@ export default {
 <style scoped>
 .container {
     width: 100%;
-    height: 844px;
+    height: 100vh;
     background-color: #05000F;
 }
 .container .logo {

@@ -22,7 +22,7 @@
                 <button class="confirm" @click="login">Log on</button>
                 <div class="bottomContent">
                     <button class="forget-password">forgot password？</button>
-                    <button class="turn-register">Register</button>
+                    <button class="turn-register" @click="turnRegister">Register</button>
                 </div>
             </div>
         </div>
@@ -73,6 +73,9 @@ export default {
             .catch((error) => {
                 console.log(error)
             })
+        },
+        turnRegister() {
+            router.replace({ path: '/register' })
         }
     }
 }

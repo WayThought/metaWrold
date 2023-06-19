@@ -57,7 +57,7 @@
             </template>
           </el-input>
           <button class="confirm" @click="register">Register</button>
-          <button class="turn-login">Log on</button>
+          <button class="turn-login" @click="turnLogin">Log on</button>
       </div>
     </div>
   </div>
@@ -125,6 +125,9 @@ export default {
             .catch((error) => {
                 console.log(error)
             })
+        },
+        turnLogin() {
+            router.replace({ path: '/login' })
         }
     }
 }
