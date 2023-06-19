@@ -5,6 +5,7 @@
         <div class="logo"></div>
         <div class="userName">昵称: {{ nickname }}</div>
         <div class="email">邮箱: {{ email }}</div>
+        <div class="nft">USDT: 0</div>
         <div class="nft">拥有的NFT: 0个</div>
         <div class="usdt-link">USDT地址(用于提取奖励): 0xbe4e3699cb870bc95365fe04a187dd279a651a58</div>
          

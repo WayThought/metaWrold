@@ -4,7 +4,8 @@
         <div class="logo"></div>
         <div class="userName">昵称: {{ nickname }}</div>
         <div class="email">邮箱: {{ email }}</div>
-        <div class="nft">拥有的NFT: -</div>
+        <div class="nft">USDT: 0</div>
+        <div class="nft">拥有的NFT: 0个</div>
         <div class="invitationcode">邀请码: {{ invitationCode }}</div>
         <router-link to="/" key="home">
             <button class="logout" @click="logout">退出登录</button>
