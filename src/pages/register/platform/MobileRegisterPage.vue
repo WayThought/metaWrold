@@ -5,6 +5,16 @@
       <div class="content">
           <div class="logo"></div>
           <div class="title">Register</div>
+
+          <el-input 
+          v-model="nickName" 
+          class="email-input input-view"
+          placeholder="NickName">
+            <template #prefix>
+              <el-icon size="20" class="el-input__icon"><User /></el-icon>
+            </template>
+          </el-input>
+
           <el-input 
           v-model="account" 
           class="email-input input-view"
@@ -13,24 +23,31 @@
               <el-icon size="20" class="el-input__icon"><message /></el-icon>
             </template>
           </el-input>
+
           <el-input 
           v-model="password" 
           class="password-input input-view"
-          v-bind="password"
+          type="password"
+          show-password
           placeholder="Please enter the password">
             <template #prefix>
               <el-icon size="20" class="el-input__icon"><lock /></el-icon>
             </template>
           </el-input>
+
           <el-input 
           v-model="confirmpassword" 
           class="password-confirm-input input-view"
+          type="password"
+          show-password
           placeholder="Confirm Password">
             <template #prefix>
               <el-icon size="20" class="el-input__icon"><lock /></el-icon>
             </template>
           </el-input>
+
           <div class="invitation-code">Invitation code (optional)</div>
+
           <el-input 
           v-model="invitationcode" 
           class="invitation-code-input input-view"
@@ -39,7 +56,7 @@
               <el-icon size="20" class="el-input__icon"><Present /></el-icon>
             </template>
           </el-input>
-          <button class="confirm" @click="login">Register</button>
+          <button class="confirm" @click="register">Register</button>
           <button class="turn-login">Log on</button>
       </div>
     </div>
@@ -48,20 +65,20 @@
 </template>
   
 <script>
-
+import router from '@/router/router'
 
 export default {
     name: 'MobileRegisterPage',
     props: {
-      account: "",
-      password: "",
-      confirmpassword: "",
-      invitationcode: ""
-        
+
     },
     data() {
         return {
-            
+            nickName: "",
+            account: "",
+            password: "",
+            confirmpassword: "",
+            invitationcode: ""
         }
     },
     created() {
@@ -71,7 +88,44 @@ export default {
         
     },
     methods: {
-        
+        register() {
+            this.axios.post('/api/user/register', {
+                email: this.account,
+                password: this.password,
+                username: this.nickName
+            })
+            .then(() => {
+                this.login()
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+        },
+
+        login() {
+            this.axios.post('/api/auth/login', {
+                email: this.account,
+                password: this.password
+            })
+            .then((response) => {
+                this.auth.saveAuthInfo(response.data.data)
+                this.getUserInfo()
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+        },
+
+        getUserInfo() {
+            this.axios.get('/api/user/userInfo')
+            .then((response) => {
+                this.auth.saveUserInfo(response.data.data)
+                router.replace({ path: '/' })
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+        }
     }
 }
 </script>
@@ -91,7 +145,6 @@ export default {
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    background-attachment: fixed;
 }
 
 .content {

@@ -52,27 +52,27 @@ export default {
     },
     methods: {
         login() {
-        this.axios.post('/api/auth/login', {
-            email: this.account,
-            password: this.password
-        })
-        .then((response) => {
-            this.auth.saveAuthInfo(response.data.data)
-            this.getUserInfo()
-        })
-        .catch((error) => {
-            console.log(error)
-        })
+            this.axios.post('/api/auth/login', {
+                email: this.account,
+                password: this.password
+            })
+            .then((response) => {
+                this.auth.saveAuthInfo(response.data.data)
+                this.getUserInfo()
+            })
+            .catch((error) => {
+                console.log(error)
+            })
         },
         getUserInfo() {
-        this.axios.get('/api/user/userInfo')
-        .then((response) => {
-            this.auth.saveUserInfo(response.data.data)
-            router.replace({ path: '/' })
-        })
-        .catch((error) => {
-            console.log(error)
-        })
+            this.axios.get('/api/user/userInfo')
+            .then((response) => {
+                this.auth.saveUserInfo(response.data.data)
+                router.replace({ path: '/' })
+            })
+            .catch((error) => {
+                console.log(error)
+            })
         }
     }
 }

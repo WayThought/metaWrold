@@ -12,6 +12,11 @@
                             <button class="login">Login</button>
                         </router-link>
                     </template>
+                    <template v-else>
+                        <router-link to="/mine" key="login">
+                            <button class="login">{{ nickname }}</button>
+                        </router-link>
+                    </template>
                 </div>
             </div>
             <img class="title" src="@/assets/icon_title.png" alt="">

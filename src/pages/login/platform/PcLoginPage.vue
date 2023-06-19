@@ -33,6 +33,9 @@
     
 <script>
 import router from '@/router/router'
+
+// import "toastify-js/src/toastify.css"
+
 export default {
   data() {
     return {
@@ -67,6 +70,13 @@ export default {
       })
       .catch((error) => {
         console.log(error)
+        // Toastify({
+        //   text: "This is a toast with offset",
+        //   offset: {
+        //     x: 50, // horizontal axis - can be a number or a string indicating unity. eg: '2em'
+        //     y: 10 // vertical axis - can be a number or a string indicating unity. eg: '2em'
+        //   },
+        // }).showToast();
       })
     }
   },

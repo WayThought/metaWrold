@@ -19,7 +19,9 @@
                         </router-link>
                     </template>
                     <template v-if="isLogin === true">
-                        <button class="login" @click="logout">{{ nickname }}</button>
+                        <router-link to="/mine" key="mine">
+                            <button class="login">{{ nickname }}</button>
+                        </router-link>
                     </template>
                 </div>
             </div>
