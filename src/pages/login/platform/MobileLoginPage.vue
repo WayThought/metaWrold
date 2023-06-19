@@ -4,25 +4,25 @@
         <div class="bgImageContainer">
             <div class="content">
                 <div class="logo"></div>
-                <div class="title">Log on</div>
-                <el-input v-model="account" class="email-input input-view" placeholder="Please enter an account">
+                <div class="title">{{ loginDesc }}</div>
+                <el-input v-model="account" class="email-input input-view" :placeholder="accountDesc">
                     <template #prefix>
                     <el-icon size="20" class="el-input__icon">
                         <message />
                     </el-icon>
                     </template>
                 </el-input>
-                <el-input v-model="password" class="password-input input-view" placeholder="Please enter the password">
+                <el-input v-model="password" class="password-input input-view" :placeholder="passwordDesc">
                     <template #prefix>
                     <el-icon size="20" class="el-input__icon">
                         <lock />
                     </el-icon>
                     </template>
                 </el-input>
-                <button class="confirm" @click="login">Log on</button>
+                <button class="confirm" @click="login">{{ loginDesc }}</button>
                 <div class="bottomContent">
-                    <button class="forget-password">forgot password？</button>
-                    <button class="turn-register" @click="turnRegister">Register</button>
+                    <button class="forget-password">{{ forgotDesc }}</button>
+                    <button class="turn-register" @click="turnRegister">{{ registerDesc }}</button>
                 </div>
             </div>
         </div>
@@ -40,15 +40,21 @@ export default {
     },
     data() {
         return {
-        account: "98903@163.com",
-        password: "123456",
+            account: "",
+            password: "",
+            accountDesc: "请输入邮箱",
+            passwordDesc: "请输入密码",
+            loginDesc: "登录",
+            forgotDesc: "忘记密码",
+            registerDesc: "注册",
+            isEnglish: false,
         }
     },
     created() {
-        
+        this.resetStatus()
     },
     components: {
-        
+
     },
     methods: {
         login() {
@@ -76,6 +82,14 @@ export default {
         },
         turnRegister() {
             router.replace({ path: '/register' })
+        },
+        resetStatus() {
+            this.isEnglish= localStorage.getItem('isEnglish') == "1";
+            this.accountDesc = this.isEnglish ? "Please enter an account" : "请输入邮箱"
+            this.passwordDesc = this.isEnglish ? "Please enter the password" : "请输入密码"
+            this.loginDesc = this.isEnglish ? "Log on" : "登录"
+            this.forgotDesc = this.isEnglish ? "forgot password?" :"忘记密码"
+            this.registerDesc = this.isEnglish ? "Register" : "注册"
         }
     }
 }

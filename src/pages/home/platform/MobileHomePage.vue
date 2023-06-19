@@ -64,7 +64,8 @@ export default {
             text6: "在创世大富翁的世界里，您將利用独一无二的NFT角色来获得金币，并在棋牌游戏中利用您的策略取胜从而获得我们的 虛拟代币F。 您可以利用F币在虛拟城市中购买房屋以产生更多的金币收入，还可以利用 F通过投票获得城市的管辖权定价权。拥有更多的金币參与到更高层测的 棋牌对局从而获得更多的虛拟代币，创建一个玩家可以通过游戏赚取利润的区块链元宇宙世界！",
             text7: "发布Founder平台上的NFT，每个NFT根据职业的不同可以获得每日的薪资（金币），金币可以用来进行棋牌类游戏，以及Founder平台后续开发的游戏。",
             text8: "玩家通过Founder平台上游戏的对决获胜和活跃的获得虛拟代币F",
-            text9: "通过代币F可以在庭拟世界中购买土地搭建自己的房子产生金币收入，也可以通过 代币F在虚拟世界中进行投票和代理，从而达到一个玩家自制的元宇宙世界。"
+            text9: "通过代币F可以在庭拟世界中购买土地搭建自己的房子产生金币收入，也可以通过 代币F在虚拟世界中进行投票和代理，从而达到一个玩家自制的元宇宙世界。",
+            isEnglish: false,
         }
     },
     created() {
@@ -78,24 +79,33 @@ export default {
             this.isLogin = false
             this.nickname = 'Login'
         }
+        this.resetStatus()
     },
     components: {
         MobileStepItem,
     },
     methods: {
         languageChage() {
-            this.$isEnglish = !this.$isEnglish
-            this.text1 = this.$isEnglish ? "Buy NFT to participate in the first test" : "购买NFT参加第一次测试"
-            this.text2 = this.$isEnglish ? "Win 10,000" : "赢得 10,000"
-            this.text3 = this.$isEnglish ? "First test instructions" : "首测说明："
-            this.text4 = this.$isEnglish ? "By purchasing the first NFT, you can participate in the first test of Genesis  Monopoly. The first round reduction adopts a qualifying mode, and players ranked in the top ten after the first round of 15 can receive a reward of 10000 USDT! There are a total of 2000 initial  NFTs priced at $29.99. Each NFT can generate 800 coins per day for gameplay consumption!" : "购买首发NFT既可 以参与创世大富翁的首次测试。首減采用排位赛模式，为其15的首测结束后排名前十的玩家既可以瓜分10000USDT的奖励！首发NFT 一共2000个，定价29.99美金。每个NFT每天可以产生800金币用于游戏对战消耗！"
-            this.text5 = this.$isEnglish ? "A Web3.0 Metaverse Blockchain Game" : "一个Web3.0元宇宙区块链游戏"
-            this.text6 = this.$isEnglish ? "In the world of Genesis Monopoly, you will use unique NFT characters to earn coins and use your strategies to win in board games to obtain our virtual token F. You can use F coins to purchase houses in a virtual city to generate more gold coin income, and you can also use F coins to obtain the jurisdiction pricing power of the city through voting. Having more gold coins to participate in higher level chess and card games to obtain more virtual tokens, creating a blockchain metaverse world where players can earn profits through the game" : "在创世大富翁的世界里，您將利用独一无二的NFT角色来获得金币，并在棋牌游戏中利用您的策略取胜从而获得我们的 虛拟代币F。 您可以利用F币在虛拟城市中购买房屋以产生更多的金币收入，还可以利用 F通过投票获得城市的管辖权定价权。拥有更多的金币參与到更高层测的 棋牌对局从而获得更多的虛拟代币，创建一个玩家可以通过游戏赚取利润的区块链元宇宙世界！"
-            this.text7 = this.$isEnglish ? "Publish NFTs on the Founder platform, and each NFT can receive a daily salary (in gold coins) based on their profession. Gold coins can be used for playing board and card games, as well as games developed on the Founder platform." : "发布Founder平台上的NFT，每个NFT根据职业的不同可以获得每日的薪资（金币），金币可以用来进行棋牌类游戏，以及Founder平台后续开发的游戏。"
-            this.text8 = this.$isEnglish ? "Players win battles and actively obtain virtual tokens through games on the Founder platform" : "玩家通过Founder平台上游戏的对决获胜和活跃的获得虛拟代币F"
-            this.text9 = this.$isEnglish ? "By using token F, one can purchase land and build their own house in the virtual world to generate gold income, or vote and represent in the virtual world through token F, thus achieving a player made metaverse world." : "通过代币F可以在庭拟世界中购买土地搭建自己的房子产生金币收入，也可以通过 代币F在虚拟世界中进行投票和代理，从而达到一个玩家自制的元宇宙世界。"
+            const status = localStorage.getItem('isEnglish');
+            if (status == "1") {
+                localStorage.setItem('isEnglish', "0");
+            } else {
+                localStorage.setItem('isEnglish', "1");
+            }
+            this.resetStatus()
+        },
+        resetStatus() {
+            this.isEnglish = localStorage.getItem('isEnglish') == "1";
+            this.text1 = this.isEnglish ? "Buy NFT to participate in the first test" : "购买NFT参加第一次测试"
+            this.text2 = this.isEnglish ? "Win 10,000" : "赢得 10,000"
+            this.text3 = this.isEnglish ? "First test instructions" : "首测说明："
+            this.text4 = this.isEnglish ? "By purchasing the first NFT, you can participate in the first test of Genesis  Monopoly. The first round reduction adopts a qualifying mode, and players ranked in the top ten after the first round of 15 can receive a reward of 10000 USDT! There are a total of 2000 initial  NFTs priced at $29.99. Each NFT can generate 800 coins per day for gameplay consumption!" : "购买首发NFT既可 以参与创世大富翁的首次测试。首減采用排位赛模式，为其15的首测结束后排名前十的玩家既可以瓜分10000USDT的奖励！首发NFT 一共2000个，定价29.99美金。每个NFT每天可以产生800金币用于游戏对战消耗！"
+            this.text5 = this.isEnglish ? "A Web3.0 Metaverse Blockchain Game" : "一个Web3.0元宇宙区块链游戏"
+            this.text6 = this.isEnglish ? "In the world of Genesis Monopoly, you will use unique NFT characters to earn coins and use your strategies to win in board games to obtain our virtual token F. You can use F coins to purchase houses in a virtual city to generate more gold coin income, and you can also use F coins to obtain the jurisdiction pricing power of the city through voting. Having more gold coins to participate in higher level chess and card games to obtain more virtual tokens, creating a blockchain metaverse world where players can earn profits through the game" : "在创世大富翁的世界里，您將利用独一无二的NFT角色来获得金币，并在棋牌游戏中利用您的策略取胜从而获得我们的 虛拟代币F。 您可以利用F币在虛拟城市中购买房屋以产生更多的金币收入，还可以利用 F通过投票获得城市的管辖权定价权。拥有更多的金币參与到更高层测的 棋牌对局从而获得更多的虛拟代币，创建一个玩家可以通过游戏赚取利润的区块链元宇宙世界！"
+            this.text7 = this.isEnglish ? "Publish NFTs on the Founder platform, and each NFT can receive a daily salary (in gold coins) based on their profession. Gold coins can be used for playing board and card games, as well as games developed on the Founder platform." : "发布Founder平台上的NFT，每个NFT根据职业的不同可以获得每日的薪资（金币），金币可以用来进行棋牌类游戏，以及Founder平台后续开发的游戏。"
+            this.text8 = this.isEnglish ? "Players win battles and actively obtain virtual tokens through games on the Founder platform" : "玩家通过Founder平台上游戏的对决获胜和活跃的获得虛拟代币F"
+            this.text9 = this.isEnglish ? "By using token F, one can purchase land and build their own house in the virtual world to generate gold income, or vote and represent in the virtual world through token F, thus achieving a player made metaverse world." : "通过代币F可以在庭拟世界中购买土地搭建自己的房子产生金币收入，也可以通过 代币F在虚拟世界中进行投票和代理，从而达到一个玩家自制的元宇宙世界。"
         }
-        
     }
 }
 </script>

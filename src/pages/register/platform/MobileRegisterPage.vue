@@ -9,7 +9,7 @@
           <el-input 
           v-model="nickName" 
           class="email-input input-view"
-          placeholder="NickName">
+          :placeholder="nickNameDesc">
             <template #prefix>
               <el-icon size="20" class="el-input__icon"><User /></el-icon>
             </template>
@@ -18,7 +18,7 @@
           <el-input 
           v-model="account" 
           class="email-input input-view"
-          placeholder="Email Address">
+          :placeholder="accountDesc">
             <template #prefix>
               <el-icon size="20" class="el-input__icon"><message /></el-icon>
             </template>
@@ -29,7 +29,7 @@
           class="password-input input-view"
           type="password"
           show-password
-          placeholder="Please enter the password">
+          :placeholder="passwordDesc">
             <template #prefix>
               <el-icon size="20" class="el-input__icon"><lock /></el-icon>
             </template>
@@ -40,24 +40,24 @@
           class="password-confirm-input input-view"
           type="password"
           show-password
-          placeholder="Confirm Password">
+          :placeholder="confirmPasswordDesc">
             <template #prefix>
               <el-icon size="20" class="el-input__icon"><lock /></el-icon>
             </template>
           </el-input>
 
-          <div class="invitation-code">Invitation code (optional)</div>
+          <div class="invitation-code">{{ invitationCodeDesc }}</div>
 
           <el-input 
           v-model="invitationcode" 
           class="invitation-code-input input-view"
-          placeholder="Enter invitation code">
+          :placeholder="invitationCodeDesc">
             <template #prefix>
               <el-icon size="20" class="el-input__icon"><Present /></el-icon>
             </template>
           </el-input>
-          <button class="confirm" @click="register">Register</button>
-          <button class="turn-login" @click="turnLogin">Log on</button>
+          <button class="confirm" @click="register">{{ registerDesc }}</button>
+          <button class="turn-login" @click="turnLogin">{{ loginDesc }}}</button>
       </div>
     </div>
   </div>
@@ -78,10 +78,21 @@ export default {
             account: "",
             password: "",
             confirmpassword: "",
-            invitationcode: ""
+            invitationcode: "",
+
+            nickNameDesc: "请输入昵称",
+            accountDesc: "请输入邮箱",
+            passwordDesc: "请输入密码",
+            confirmPasswordDesc: "确认您的密码",
+            loginDesc: "登录",
+            invitationCodeTip: "邀请码",
+            invitationCodeDesc: "请输入邀请码",
+            registerDesc: "注册",
+            isEnglish: false,
         }
     },
     created() {
+      this.resetStatus()
         
     },
     components: {
@@ -128,6 +139,18 @@ export default {
         },
         turnLogin() {
             router.replace({ path: '/login' })
+        },
+
+        resetStatus() {
+          this.isEnglish= localStorage.getItem('isEnglish') == "1";
+          this.nickNameDesc = this.isEnglish ? "Please enter an nickname" : "请输入昵称"
+          this.accountDesc = this.isEnglish ? "Please enter an account" : "请输入邮箱"
+          this.passwordDesc = this.isEnglish ? "Please enter the password" : "请输入密码"
+          this.confirmPasswordDesc = this.isEnglish ? "Confirm Password" : "确认您的密码"
+          this.loginDesc = this.isEnglish ? "Log on" : "登录"
+          this.invitationCodeTip = this.isEnglish ? "Invitation code (optional)" :"邀请码(可选)"
+          this.invitationCodeDesc = this.isEnglish ? "Enter invitation code" :"请输入邀请码"
+          this.registerDesc = this.isEnglish ? "Register" : "注册"
         }
     }
 }
@@ -194,7 +217,7 @@ export default {
   font-size: 18px;
   font-weight: 900;
   text-align: left;
-  margin-left: 48px;
+  margin-left: 16px;
 }
 .invitation-code-input {
   margin-top: 8px;
