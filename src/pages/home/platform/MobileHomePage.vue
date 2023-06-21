@@ -5,6 +5,7 @@
                 <img class="nav_logo" src="@/assets/icon_mobile_logo.png" alt="">
                 <div class="buttonContent">
                     <span class="language"  @click="languageChage(true)">language/语言</span>
+
                     <template v-if="isLogin === false">
                         <router-link to="/register" key="register">
                             <button class="register">Register</button>
@@ -112,6 +113,7 @@ export default {
   
 <style scoped>
     .container {
+        width: 100%;
         background-color: #05000F;
     }
     .nav {

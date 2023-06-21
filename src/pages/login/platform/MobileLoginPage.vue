@@ -4,7 +4,12 @@
         <div class="bgImageContainer">
             <div class="content">
                 <div class="logo"></div>
-                <div class="title">{{ loginDesc }}</div>
+                <div class="titleContent">
+                    <div class="title">{{ loginDesc }}</div>
+                    <div class="errorTip">{{ errorMsg }}</div>
+                </div>
+
+
                 <el-input v-model="account" class="email-input input-view" :placeholder="accountDesc">
                     <template #prefix>
                     <el-icon size="20" class="el-input__icon">
@@ -48,6 +53,7 @@ export default {
             forgotDesc: "忘记密码",
             registerDesc: "注册",
             isEnglish: false,
+            errorMsg: "",
         }
     },
     created() {
@@ -58,6 +64,15 @@ export default {
     },
     methods: {
         login() {
+            if (this.account == '') {
+                this.errorMsg = '请输入邮箱'
+                return
+
+            } else if (this.password == '') {
+                this.errorMsg = '请输入密码'
+                return
+            }
+            this.errorMsg = ''
             this.axios.post('/api/auth/login', {
                 email: this.account,
                 password: this.password
@@ -67,7 +82,7 @@ export default {
                 this.getUserInfo()
             })
             .catch((error) => {
-                console.log(error)
+                this.errorMsg = error.message
             })
         },
         getUserInfo() {
@@ -128,15 +143,25 @@ export default {
         margin-top: 32px;
         margin-left: 16px;
     }
-
-    .content .title {
+    .content .titleContent {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 18px;
+        margin-left: 16px;
+        margin-right: 16px;
+    }
+    .content .titleContent .title {
         font-size: 24px;
         font-weight: bold;
-        margin-top: 28px;
         text-align: left;
-        margin-left: 16px;
     }
-
+    .content .titleContent .errorTip {
+        margin-top: 8px;
+        display: inline;
+        font-size: 14px;
+        text-align: right;
+        color: red;
+    }
     .email-input {
         margin-top: 20px;
     }
@@ -172,14 +197,12 @@ export default {
         outline: none;
         background-color: transparent;
     }
-
     .bottomContent {
         margin-top: 18px;
         margin-bottom: 35px;
         display: flex;
         justify-content: space-around;
     }
-
     .forget-password {
         text-align: right;
         font-size: 14px;
@@ -189,7 +212,6 @@ export default {
         outline: none;
         background-color: transparent;
     }
-
     .turn-register {
         text-align: right;
         font-size: 14px;

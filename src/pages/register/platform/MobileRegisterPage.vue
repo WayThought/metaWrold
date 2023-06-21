@@ -4,7 +4,10 @@
     <div class="bgImageContainer">
       <div class="content">
           <div class="logo"></div>
-          <div class="title">Register</div>
+          <div class="titleContent">
+            <div class="title">Register</div>
+            <div class="errorTip">{{ errorMsg }}</div>
+          </div>
 
           <el-input 
           v-model="nickName" 
@@ -79,6 +82,7 @@ export default {
             password: "",
             confirmpassword: "",
             invitationcode: "",
+            errorMsg: "",
 
             nickNameDesc: "请输入昵称",
             accountDesc: "请输入邮箱",
@@ -100,17 +104,41 @@ export default {
     },
     methods: {
         register() {
-            this.axios.post('/api/user/register', {
-                email: this.account,
-                password: this.password,
-                username: this.nickName
-            })
-            .then(() => {
-                this.login()
-            })
-            .catch((error) => {
-                console.log(error)
-            })
+          if (this.nickName == '') {
+            this.errorMsg = '请输入昵称'
+            return
+
+          } else if (this.account == '') {
+            this.errorMsg = '请输入邮箱'
+            return
+
+          } else if (this.password == '') {
+            this.errorMsg = '请输入密码'
+            return
+
+          } else if (this.confirmpassword == '') {
+            this.errorMsg = '请再次输入密码'
+            return
+
+          }
+
+          if (this.password != this.confirmpassword) {
+            this.errorMsg = '两次密码不一致，请重新输入'
+            return
+          }
+
+          this.errorMsg = ''
+          this.axios.post('/api/user/register', {
+              email: this.account,
+              password: this.password,
+              username: this.nickName
+          })
+          .then(() => {
+              this.login()
+          })
+          .catch((error) => {
+            this.errorMsg = error.message
+          })
         },
 
         login() {
@@ -186,15 +214,29 @@ export default {
     background-image: url(../../../assets/icon_register_logo.png);
     width: 58px;
     height: 47px;
-    margin-top: 32px;
+    margin-top: 26px;
     margin-left: 16px;
 }
-.content .title {
+.titleContent {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 18px;
+    margin-left: 16px;
+    margin-right: 16px;
+}
+
+.content .titleContent .title {
+    display: inline;
     font-size: 24px;
     font-weight: bold;
-    margin-top: 28px;
     text-align: left;
-    margin-left: 16px;
+}
+.content .titleContent .errorTip {
+  margin-top: 8px;
+  display: inline;
+  font-size: 14px;
+  text-align: right;
+  color: red;
 }
 .email-input {
   margin-top: 20px;
@@ -243,7 +285,7 @@ export default {
 .turn-login {
   margin-left: 280px;
   margin-top: 8px;
-  margin-bottom: 35px;
+  margin-bottom: 20px;
   display: block;
   text-align: right;
   font-size: 14px;
