@@ -13,7 +13,7 @@
               </el-icon>
             </template>
           </el-input>
-          <el-input v-model="password" class="password-input input-view" :placeholder="passwordDesc">
+          <el-input v-model="password" type="password" show-password class="password-input input-view" :placeholder="passwordDesc">
             <template #prefix>
               <el-icon size="20" class="el-input__icon">
                 <lock />
