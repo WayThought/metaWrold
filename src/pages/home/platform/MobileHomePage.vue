@@ -8,10 +8,10 @@
 
                     <template v-if="isLogin === false">
                         <router-link to="/register" key="register">
-                            <button class="register">Register</button>
+                            <button class="register">{{ registerDesc }}</button>
                         </router-link>
                         <router-link to="/login" key="login">
-                            <button class="login">Login</button>
+                            <button class="login">{{ loginDesc }}</button>
                         </router-link>
                     </template>
                     <template v-else>
@@ -28,7 +28,7 @@
 
         <div class="buy_number">{{ text2 }}</div>
         <img class="buy_unit" src="@/assets/mobile_home_unit.png" alt="">
-        <button class="buy">BUT NFT</button>
+        <button class="buy" @click="buyBtnClick">BUT NFT</button>
         <div class="instruction">
             <span class="title">{{ text3 }}</span>
             <span class="desc">{{ text4 }}</span>
@@ -47,6 +47,7 @@
 <script>
 
 import MobileStepItem from '@/components/MobileStepItem.vue'
+import router from '@/router/router'
 
 export default {
     name: 'MobileHomePage',
@@ -57,6 +58,8 @@ export default {
         return {
             isLogin: false,
             nickname: '',
+            loginDesc: '登录',
+            registerDesc: '注册',
             text1: '购买NFT参加第一次测试',
             text2: "赢得 10,000",
             text3: "首测说明：",
@@ -97,6 +100,8 @@ export default {
         },
         resetStatus() {
             this.isEnglish = localStorage.getItem('isEnglish') == "1";
+            this.loginDesc = this.isEnglish ? "Login" : "登录"
+            this.registerDesc = this.isEnglish ? "Register" : "注册"
             this.text1 = this.isEnglish ? "Buy NFT to participate in the first test" : "购买NFT参加第一次测试"
             this.text2 = this.isEnglish ? "Win 10,000" : "赢得 10,000"
             this.text3 = this.isEnglish ? "First test instructions" : "首测说明："
@@ -106,6 +111,13 @@ export default {
             this.text7 = this.isEnglish ? "Publish NFTs on the Founder platform, and each NFT can receive a daily salary (in gold coins) based on their profession. Gold coins can be used for playing board and card games, as well as games developed on the Founder platform." : "发布Founder平台上的NFT，每个NFT根据职业的不同可以获得每日的薪资（金币），金币可以用来进行棋牌类游戏，以及Founder平台后续开发的游戏。"
             this.text8 = this.isEnglish ? "Players win battles and actively obtain virtual tokens through games on the Founder platform" : "玩家通过Founder平台上游戏的对决获胜和活跃的获得虛拟代币F"
             this.text9 = this.isEnglish ? "By using token F, one can purchase land and build their own house in the virtual world to generate gold income, or vote and represent in the virtual world through token F, thus achieving a player made metaverse world." : "通过代币F可以在庭拟世界中购买土地搭建自己的房子产生金币收入，也可以通过 代币F在虚拟世界中进行投票和代理，从而达到一个玩家自制的元宇宙世界。"
+        },
+        buyBtnClick() {
+            if (this.isLogin) {
+                console.log('已登录')
+            } else {
+                router.replace({ path: '/login' })
+            }
         }
     }
 }
