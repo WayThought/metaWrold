@@ -154,9 +154,9 @@ export default {
     }
     .buttonContent .language {
         display: inline;
-        margin-top: 14px;
+        line-height: 50px;
         margin-right: 8px;
-        height: 28px;
+        height: 50px;
         font-size: 14px;
         color: white;
     }
