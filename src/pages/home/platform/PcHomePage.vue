@@ -14,7 +14,7 @@
                         <template #dropdown>
                         <el-dropdown-menu>
                             <el-dropdown-item @click="languageChangeToEnglish">English</el-dropdown-item>
-                            <el-dropdown-item @click="languageChangeToChinese">Chinese</el-dropdown-item>
+                            <el-dropdown-item @click="languageChangeToChinese">中文</el-dropdown-item>
                         </el-dropdown-menu>
                         </template>
                     </el-dropdown>

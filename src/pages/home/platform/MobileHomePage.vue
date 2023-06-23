@@ -4,7 +4,15 @@
             <div class="nav">
                 <img class="nav_logo" src="@/assets/icon_mobile_logo.png" alt="">
                 <div class="buttonContent">
-                    <span class="language"  @click="languageChage(true)">language/语言</span>
+                    <el-dropdown trigger="click">
+                        <span class="language">language/语言</span>
+                        <template #dropdown>
+                        <el-dropdown-menu>
+                            <el-dropdown-item @click="languageChangeToEnglish">English</el-dropdown-item>
+                            <el-dropdown-item @click="languageChangeToChinese">中文</el-dropdown-item>
+                        </el-dropdown-menu>
+                        </template>
+                    </el-dropdown>
 
                     <template v-if="isLogin === false">
                         <router-link to="/register" key="register">
@@ -100,6 +108,14 @@ export default {
             } else {
                 localStorage.setItem('isEnglish', "1");
             }
+            this.resetStatus()
+        },
+        languageChangeToEnglish() {
+            localStorage.setItem('isEnglish', "1")
+            this.resetStatus()
+        },
+        languageChangeToChinese() {
+            localStorage.setItem('isEnglish', "0")
             this.resetStatus()
         },
         resetStatus() {
