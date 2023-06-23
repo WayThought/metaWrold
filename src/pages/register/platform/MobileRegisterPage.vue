@@ -5,7 +5,7 @@
       <div class="content">
           <div class="logo"></div>
           <div class="titleContent">
-            <div class="title">{{ registerDesc }}</div>
+            <div class="title">Register</div>
             <div class="errorTip">{{ errorMsg }}</div>
           </div>
 
@@ -59,7 +59,7 @@
               <el-icon size="20" class="el-input__icon"><Present /></el-icon>
             </template>
           </el-input>
-          <button class="confirm" @click="register">{{ registerDesc }}</button>
+          <el-button class="confirm" @click="register" :loading="regButtonLoading" round>{{ registerDesc }}</el-button>
           <button class="turn-login" @click="turnLogin">{{ loginDesc }}</button>
       </div>
     </div>
@@ -83,7 +83,6 @@ export default {
             confirmpassword: "",
             invitationcode: "",
             errorMsg: "",
-
             nickNameDesc: "请输入昵称",
             accountDesc: "请输入邮箱",
             passwordDesc: "请输入密码",
@@ -93,6 +92,7 @@ export default {
             invitationCodeDesc: "请输入邀请码",
             registerDesc: "注册",
             isEnglish: false,
+            regButtonLoading: false,
         }
     },
     created() {
@@ -127,6 +127,7 @@ export default {
             return
           }
 
+          this.regButtonLoading = true
           this.errorMsg = ''
           this.axios.post('/api/user/register', {
               email: this.account,
@@ -137,7 +138,13 @@ export default {
               this.login()
           })
           .catch((error) => {
-            this.errorMsg = error.message
+            this.regButtonLoading = false
+            let message = error.response.data.message
+            if (message == undefined || message == null || message == '') {
+              this.errorMsg = '网络错误'
+            } else {
+              this.errorMsg = message
+            }
           })
         },
 
@@ -151,18 +158,33 @@ export default {
                 this.getUserInfo()
             })
             .catch((error) => {
-                console.log(error)
+              this.regButtonLoading = false
+              this.auth.logout()
+              let message = error.response.data.message
+              if (message == undefined || message == null || message == '') {
+                this.errorMsg = '网络错误'
+              } else {
+                this.errorMsg = message
+              }
             })
         },
 
         getUserInfo() {
             this.axios.get('/api/user/userInfo')
             .then((response) => {
+                this.regButtonLoading = false
                 this.auth.saveUserInfo(response.data.data)
                 router.replace({ path: '/' })
             })
             .catch((error) => {
-                console.log(error)
+              this.regButtonLoading = false
+              this.auth.logout()
+              let message = error.response.data.message
+              if (message == undefined || message == null || message == '') {
+                this.errorMsg = '网络错误'
+              } else {
+                this.errorMsg = message
+              }
             })
         },
         turnLogin() {

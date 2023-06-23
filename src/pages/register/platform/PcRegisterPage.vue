@@ -58,7 +58,7 @@
               <el-icon size="20" class="el-input__icon"><Present /></el-icon>
             </template>
           </el-input>
-          <button class="confirm" @click="register">{{ registerDesc }}</button>
+          <el-button class="confirm" @click="register" :loading="regButtonLoading" round>{{ registerDesc }}</el-button>
           <button class="turn-login" @click="turnLogin">{{ loginDesc }}</button>
         </div>
       </div>
@@ -89,7 +89,7 @@ export default {
         invitationCodeDesc: "请输入邀请码",
         registerDesc: "注册",
         isEnglish: false,
-        
+        regButtonLoading: false,
     }
   },
   name: 'PcRegisterPage',
@@ -125,6 +125,7 @@ export default {
             return
           }
 
+          this.regButtonLoading = true
           this.errorMsg = ''
           this.axios.post('/api/user/register', {
               email: this.account,
@@ -132,10 +133,17 @@ export default {
               username: this.nickName
           })
           .then(() => {
-              this.login()
+            this.login()
           })
           .catch((error) => {
-            this.errorMsg = error.message
+            this.regButtonLoading = false
+            this.auth.logout()
+            let message = error.response.data.message
+            if (message == undefined || message == null || message == '') {
+              this.errorMsg = '网络错误'
+            } else {
+              this.errorMsg = message
+            }
           })
         },
 
@@ -149,7 +157,14 @@ export default {
                 this.getUserInfo()
             })
             .catch((error) => {
-                console.log(error)
+              this.regButtonLoading = false
+              this.auth.logout()
+              let message = error.response.data.message
+              if (message == undefined || message == null || message == '') {
+                this.errorMsg = '网络错误'
+              } else {
+                this.errorMsg = message
+              }
             })
         },
 
@@ -160,7 +175,14 @@ export default {
                 router.replace({ path: '/' })
             })
             .catch((error) => {
-                console.log(error)
+              this.regButtonLoading = false
+              this.auth.logout()
+              let message = error.response.data.message
+              if (message == undefined || message == null || message == '') {
+                this.errorMsg = '网络错误'
+              } else {
+                this.errorMsg = message
+              }
             })
         },
         turnLogin() {

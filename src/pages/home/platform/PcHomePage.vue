@@ -9,7 +9,15 @@
                     <img class="twitter" src="@/assets/icon_twitter.png" alt="logo">
                     <img class="discord" src="@/assets/icon_discord.png" alt="logo">
                     <img class="facebook" src="@/assets/icon_facebook.png" alt="logo">
-                    <span class="language"  @click="languageChage(true)">language/语言</span>
+                    <el-dropdown trigger="click">
+                        <span class="language">language/语言</span>
+                        <template #dropdown>
+                        <el-dropdown-menu>
+                            <el-dropdown-item @click="languageChangeToEnglish">English</el-dropdown-item>
+                            <el-dropdown-item @click="languageChangeToChinese">Chinese</el-dropdown-item>
+                        </el-dropdown-menu>
+                        </template>
+                    </el-dropdown>
                     <template v-if="isLogin === false">
                         <router-link to="/register" key="register">
                             <button class="register">{{ registerDesc }}</button>
@@ -120,13 +128,12 @@ export default {
             this.isLogin = false
             this.nickname = ''
         },
-        languageChage() {
-            const status = localStorage.getItem('isEnglish');
-            if (status == "1") {
-                localStorage.setItem('isEnglish', "0");
-            } else {
-                localStorage.setItem('isEnglish', "1");
-            }
+        languageChangeToEnglish() {
+            localStorage.setItem('isEnglish', "1")
+            this.resetStatus()
+        },
+        languageChangeToChinese() {
+            localStorage.setItem('isEnglish', "0")
             this.resetStatus()
         },
         resetStatus() {

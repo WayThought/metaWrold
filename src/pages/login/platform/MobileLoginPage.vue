@@ -8,6 +8,8 @@
                     <div class="title">{{ loginDesc }}</div>
                     <div class="errorTip">{{ errorMsg }}</div>
                 </div>
+
+
                 <el-input v-model="account" class="email-input input-view" :placeholder="accountDesc">
                     <template #prefix>
                     <el-icon size="20" class="el-input__icon">
@@ -22,7 +24,7 @@
                     </el-icon>
                     </template>
                 </el-input>
-                <button class="confirm" @click="login">{{ loginDesc }}</button>
+                <el-button class="confirm" @click="login" :loading="loginButtonLoading" round>{{ loginDesc }}</el-button>
                 <div class="bottomContent">
                     <button class="forget-password">{{ forgotDesc }}</button>
                     <button class="turn-register" @click="turnRegister">{{ registerDesc }}</button>
@@ -52,6 +54,7 @@ export default {
             registerDesc: "注册",
             isEnglish: false,
             errorMsg: "",
+            loginButtonLoading: false,
         }
     },
     created() {
@@ -70,6 +73,7 @@ export default {
                 this.errorMsg = '请输入密码'
                 return
             }
+            this.loginButtonLoading = true
             this.errorMsg = ''
             this.axios.post('/api/auth/login', {
                 email: this.account,
@@ -80,17 +84,31 @@ export default {
                 this.getUserInfo()
             })
             .catch((error) => {
-                this.errorMsg = error.message
+                this.loginButtonLoading = false
+                let message = error.response.data.message
+                if (message == undefined || message == null || message == '') {
+                    this.errorMsg = '网络错误'
+                } else {
+                    this.errorMsg = message
+                }
             })
         },
         getUserInfo() {
             this.axios.get('/api/user/userInfo')
             .then((response) => {
+                this.loginButtonLoading = false
                 this.auth.saveUserInfo(response.data.data)
                 router.replace({ path: '/' })
             })
             .catch((error) => {
-                console.log(error)
+                this.loginButtonLoading = false
+                this.auth.logout()
+                let message = error.response.data.message
+                if (message == undefined || message == null || message == '') {
+                    this.errorMsg = '网络错误'
+                } else {
+                    this.errorMsg = message
+                }
             })
         },
         turnRegister() {
