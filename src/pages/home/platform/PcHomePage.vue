@@ -41,7 +41,7 @@
 
                 <div class="ufoContainer">
                     <img class="headerUfo" src="@/assets/icon_ufo.png" alt="headerUfo">
-                    <img class="headerStar first show" src="@/assets/icon_star.png" alt="headerStar">
+                    <img class="headerStar first" src="@/assets/icon_star.png" alt="headerStar">
                     <img class="headerStar second" src="@/assets/icon_star.png" alt="headerStar">
                     <img class="headerStar third" src="@/assets/icon_star.png" alt="headerStar">
                 </div>
@@ -443,7 +443,7 @@ export default {
 .middle .middleContainer .textContainer .ufo {
     position: absolute;
     left: 450px;
-    top: 80px
+    top: 80px;
 }
 
 .middle .middleContainer .textContainer .title {

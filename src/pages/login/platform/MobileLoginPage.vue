@@ -8,8 +8,6 @@
                     <div class="title">{{ loginDesc }}</div>
                     <div class="errorTip">{{ errorMsg }}</div>
                 </div>
-
-
                 <el-input v-model="account" class="email-input input-view" :placeholder="accountDesc">
                     <template #prefix>
                     <el-icon size="20" class="el-input__icon">

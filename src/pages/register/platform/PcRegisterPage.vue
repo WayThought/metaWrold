@@ -5,7 +5,10 @@
         <img class="tip" src="@/assets/pc_register_tip.png" alt="tip">
         <div class="registerContent">
           <div class="logo"></div>
-          <div class="title">{{ registerDesc }}</div>
+          <div class="titleContent">
+            <div class="title">{{ registerDesc }}</div>
+            <div class="errorTip">{{ errorMsg }}</div>
+          </div>
           <el-input 
           v-model="nickName" 
           class="email-input input-view"
@@ -73,6 +76,7 @@ export default {
         nickName: "",
         account: "",
         password: "",
+        errorMsg: "",
         confirmpassword: "",
         invitationcode: "",
 
@@ -85,6 +89,7 @@ export default {
         invitationCodeDesc: "请输入邀请码",
         registerDesc: "注册",
         isEnglish: false,
+        
     }
   },
   name: 'PcRegisterPage',
@@ -97,17 +102,41 @@ export default {
   },
   methods: {
         register() {
-            this.axios.post('/api/user/register', {
-                email: this.account,
-                password: this.password,
-                username: this.nickName
-            })
-            .then(() => {
-                this.login()
-            })
-            .catch((error) => {
-                console.log(error)
-            })
+          if (this.nickName == '') {
+            this.errorMsg = '请输入昵称'
+            return
+
+          } else if (this.account == '') {
+            this.errorMsg = '请输入邮箱'
+            return
+
+          } else if (this.password == '') {
+            this.errorMsg = '请输入密码'
+            return
+
+          } else if (this.confirmpassword == '') {
+            this.errorMsg = '请再次输入密码'
+            return
+
+          }
+
+          if (this.password != this.confirmpassword) {
+            this.errorMsg = '两次密码不一致，请重新输入'
+            return
+          }
+
+          this.errorMsg = ''
+          this.axios.post('/api/user/register', {
+              email: this.account,
+              password: this.password,
+              username: this.nickName
+          })
+          .then(() => {
+              this.login()
+          })
+          .catch((error) => {
+            this.errorMsg = error.message
+          })
         },
 
         login() {
@@ -202,12 +231,24 @@ export default {
   height: 47px;
   margin: 0 auto;
 }
-.registerContent .title {
+.registerContent .titleContent  {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 32px;
+    margin-left: 48px;
+    margin-right: 16px;
+}
+.registerContent .titleContent .title {
   font-size: 24px;
   font-weight: bold;
-  margin-top: 32px;
   text-align: left;
-  margin-left: 48px;
+}
+.registerContent .titleContent .errorTip {
+  margin-top: 8px;
+  display: inline;
+  font-size: 16px;
+  text-align: right;
+  color: red;
 }
 .email-input {
   margin-top: 20px;

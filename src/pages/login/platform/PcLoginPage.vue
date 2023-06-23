@@ -5,7 +5,11 @@
         <img class="tip" src="@/assets/pc_register_tip.png" alt="tip">
         <div class="registerContent">
           <div class="logo"></div>
-          <div class="title">{{ loginDesc }}</div>
+          <div class="titleContent">
+            <div class="title">{{ loginDesc }}</div>
+            <div class="errorTip">{{ errorMsg }}</div>
+          </div>
+
           <el-input v-model="account" class="email-input input-view" :placeholder="accountDesc">
             <template #prefix>
               <el-icon size="20" class="el-input__icon">
@@ -34,13 +38,12 @@
 <script>
 import router from '@/router/router'
 
-// import "toastify-js/src/toastify.css"
-
 export default {
   data() {
     return {
       account: "",
       password: "",
+      errorMsg: "",
       accountDesc: "请输入邮箱",
       passwordDesc: "请输入密码",
       loginDesc: "登录",
@@ -59,6 +62,15 @@ export default {
   },
   methods: {
     login() {
+      if (this.account == '') {
+          this.errorMsg = '请输入邮箱'
+          return
+
+      } else if (this.password == '') {
+          this.errorMsg = '请输入密码'
+          return
+      }
+      this.errorMsg = ''
       this.axios.post('/api/auth/login', {
         email: this.account,
         password: this.password
@@ -68,7 +80,7 @@ export default {
         this.getUserInfo()
       })
       .catch((error) => {
-        console.log(error)
+        this.errorMsg = error.message
       })
     },
     getUserInfo() {
@@ -155,12 +167,26 @@ export default {
   margin: 0 auto;
 }
 
-.registerContent .title {
+
+.registerContent .titleContent {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 32px;
+  margin-left: 48px;
+  margin-right: 48px;
+}
+
+.registerContent .titleContent .title {
   font-size: 24px;
   font-weight: bold;
-  margin-top: 32px;
   text-align: left;
-  margin-left: 48px;
+}
+.registerContent .titleContent .errorTip {
+  margin-top: 8px;
+  display: inline;
+  font-size: 16px;
+  text-align: right;
+  color: red;
 }
 
 .email-input {

@@ -23,6 +23,10 @@
             </div>
             <img class="title" src="@/assets/icon_title.png" alt="">
             <span class="desc">Founder</span>
+            <img class="headerStar first" src="@/assets/icon_star.png" alt="headerStar">
+            <img class="headerStar second" src="@/assets/icon_star.png" alt="headerStar">
+            <img class="headerStar third" src="@/assets/icon_star.png" alt="headerStar">
+
         </div>
         <div class="buy_desc">{{ text1 }}</div>
 
@@ -207,6 +211,76 @@ export default {
         font-weight: normal;
         color: #3C6CFB;
     }
+
+
+    .header .headerStar {
+        width: 20px;
+        height: 20px;
+    }
+
+    .header .first {
+        position: absolute;
+        top: 52px;
+        left: 287px;
+        opacity: 0;
+        animation-name: zoomInOut;
+        animation-delay: 0s;
+        animation-duration: 3s;
+        animation-iteration-count: infinite;
+        transform-origin: center;
+    }
+
+    .header .second {
+        position: absolute;
+        top: 234px;
+        left: 240px;
+        opacity: 0;
+        animation-name: zoomInOut;
+        animation-delay: 1s;
+        animation-duration: 3s;
+        animation-iteration-count: infinite;
+        transform-origin: center;
+
+    }
+
+    .header .third {
+        position: absolute;
+        top: 160px;
+        left: 360px;
+        opacity: 0;
+        animation-name: zoomInOut;
+        animation-delay: 2s;
+        animation-duration: 3s;
+        animation-iteration-count: infinite;
+        transform-origin: center;
+    }
+
+    @keyframes zoomInOut {
+        0% {
+            transform: scale(0);
+            opacity: 0;
+        }
+
+        20% {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        40% {
+            transform: scale(0);
+            opacity: 0;
+        }
+
+        60%,
+        80%,
+        100% {
+            transform: scale(0);
+            opacity: 0;
+        }
+    }
+
+
+
      .buy_desc {
         position: relative;
         margin-top: -30px;

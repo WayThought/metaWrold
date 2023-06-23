@@ -5,7 +5,7 @@
       <div class="content">
           <div class="logo"></div>
           <div class="titleContent">
-            <div class="title">Register</div>
+            <div class="title">{{ registerDesc }}</div>
             <div class="errorTip">{{ errorMsg }}</div>
           </div>
 
