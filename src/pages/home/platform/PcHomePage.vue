@@ -209,8 +209,8 @@ export default {
 
 .navBar .rightNavBar .language {
     display: inline;
-    margin-top: 14px;
-    height: 28px;
+    height: 50px;
+    line-height: 50px;
     font-size: 14px;
     color: white;
 }
