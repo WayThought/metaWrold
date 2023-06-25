@@ -54,6 +54,8 @@
         <MobileStepItem class="third" number="3" title="第三步" :desc="text9"></MobileStepItem>
     </div>
     <div class="bottomContent"></div>
+    <a class="download_android download" href="#"></a>
+    <a class="download_ios download" href="#"></a>
 </template>
   
 <script>
@@ -155,9 +157,7 @@ export default {
         top: 0;
         height: 50px;
         line-height: 50px;
-        width: 100%;
         margin-left: 10px;
-        margin-right: 10px;  
         background-color: rgb(0, 0, 0, 0.4);
     }
     .nav_logo {
@@ -405,6 +405,27 @@ export default {
     .bottomContent {
         height: 60px;
         background-color: #05000F;
+    }
+    .download {
+        position: fixed;
+        right: 10px;
+        width: 30px;
+        height: 30px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-color: white;
+        background-size: cover;
+        border-radius: 4px;
+    }
+
+    .download_ios {
+        top: 47%;
+        background-image: url(../../../assets/mobile_icon_download_ios.png);
+    }
+
+    .download_android {
+        top: 52%;
+        background-image: url(../../../assets/mobile_icon_download_android.png);
     }
 </style>
 

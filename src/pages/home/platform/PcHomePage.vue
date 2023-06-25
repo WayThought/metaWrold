@@ -511,12 +511,12 @@ export default {
 }
 
 .download_ios {
-    top: 500px;
+    top: 45%;
     background-image: url(../../../assets/icon_download_ios.png);
 }
 
 .download_android {
-    top: 580px;
+    top: 52%;
     background-image: url(../../../assets/icon_download_android.png);
 }
 </style>
