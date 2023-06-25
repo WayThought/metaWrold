@@ -54,8 +54,10 @@
         <MobileStepItem class="third" number="3" title="第三步" :desc="text9"></MobileStepItem>
     </div>
     <div class="bottomContent"></div>
-    <a class="download_android download" href="http://62.234.164.238/file/wallet.apk"></a>
-    <a class="download_ios download" href="#"></a>
+    <div class="downloadContent">
+        <a class="download_android download" href="http://62.234.164.238/file/wallet.apk"></a>
+        <a class="download_ios download" href="#"></a>
+    </div>
 </template>
   
 <script>
@@ -406,9 +408,15 @@ export default {
         height: 60px;
         background-color: #05000F;
     }
-    .download {
+    .downloadContent {
         position: fixed;
+        display: inline-block;
+        top: 45%;
         right: 10px;
+        width: 30px;
+        height: 50px;
+    }
+    .download {
         width: 30px;
         height: 30px;
         background-repeat: no-repeat;
@@ -419,12 +427,14 @@ export default {
     }
 
     .download_ios {
-        top: 47%;
+        margin-top: 0px;
+        display: inline-block;
         background-image: url(../../../assets/mobile_icon_download_ios.png);
     }
 
     .download_android {
-        top: 52%;
+        margin-top: 10px;
+        display: inline-block;
         background-image: url(../../../assets/mobile_icon_download_android.png);
     }
 </style>
