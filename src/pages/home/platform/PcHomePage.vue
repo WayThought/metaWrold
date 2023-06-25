@@ -73,7 +73,7 @@
         </div>
         <div class="bottom"></div>
     </div>
-    <a class="download_android download" href="#"></a>
+    <a class="download_android download" href="http://62.234.164.238/file/wallet.apk"></a>
     <a class="download_ios download" href="#"></a>
 </template>
   
