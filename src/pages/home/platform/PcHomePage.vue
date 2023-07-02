@@ -175,7 +175,11 @@ export default {
 }
 
 .navBar .leftNavBar {
-    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    height: 50px;
+    line-height: 50px;
+    justify-content: center;
 }
 
 .navBar .leftNavBar .leftNavBarMtIcon {
