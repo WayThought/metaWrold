@@ -65,9 +65,9 @@
                     <span class="subTitle">{{ text6 }}</span>
                 </div>
                 <div class="stepContainer">
-                    <PcStepItem class="step1" number="1" title="第一步" :desc="text7" />
-                    <PcStepItem class="step2" number="2" title="第二步" :desc="text8" />
-                    <PcStepItem class="step3" number="3" title="第三步" :desc="text9" />
+                    <PcStepItem class="step1" number="1" :title="step1" :desc="text7" />
+                    <PcStepItem class="step2" number="2" :title="step2" :desc="text8" />
+                    <PcStepItem class="step3" number="3" :title="step3" :desc="text9" />
                 </div>
             </div>
         </div>
@@ -103,6 +103,9 @@ export default {
             text7: "发布Founder平台上的NFT，每个NFT根据职业的不同可以获得每日的薪资（金币），金币可以用来进行棋牌类游戏，以及Founder平台后续开发的游戏。",
             text8: "玩家通过Founder平台上游戏的对决获胜和活跃的获得虛拟代币F",
             text9: "通过代币F可以在庭拟世界中购买土地搭建自己的房子产生金币收入，也可以通过 代币F在虚拟世界中进行投票和代理，从而达到一个玩家自制的元宇宙世界。",
+            step1: "第一步",
+            step2: "第二步",
+            step3: "第三步",
             isEnglish: false,
         }
     },
@@ -149,6 +152,9 @@ export default {
             this.text7 = this.isEnglish ? "Publish NFTs on the Founder platform, and each NFT can receive a daily salary (in gold coins) based on their profession. Gold coins can be used for playing board and card games, as well as games developed on the Founder platform." : "发布Founder平台上的NFT，每个NFT根据职业的不同可以获得每日的薪资（金币），金币可以用来进行棋牌类游戏，以及Founder平台后续开发的游戏。"
             this.text8 = this.isEnglish ? "Players win battles and actively obtain virtual tokens through games on the Founder platform" : "玩家通过Founder平台上游戏的对决获胜和活跃的获得虛拟代币F"
             this.text9 = this.isEnglish ? "By using token F, one can purchase land and build their own house in the virtual world to generate gold income, or vote and represent in the virtual world through token F, thus achieving a player made metaverse world." : "通过代币F可以在庭拟世界中购买土地搭建自己的房子产生金币收入，也可以通过 代币F在虚拟世界中进行投票和代理，从而达到一个玩家自制的元宇宙世界。"
+            this.step1 = this.isEnglish ? "Step 1" : "第一步"
+            this.step2 = this.isEnglish ? "Step 2" : "第二步"
+            this.step3 = this.isEnglish ? "Step 3" : "第三步"
         },
         buyBtnClick() {
             if (this.isLogin) {
