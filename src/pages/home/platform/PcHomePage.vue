@@ -172,6 +172,7 @@ export default {
     width: 100%;
     height: 50px;
     background-color: #05000F;
+    min-width: 1200px;
 }
 
 .navBar {
@@ -270,6 +271,7 @@ export default {
     background-image: URL("../../../assets/pcheaderbg.png");
     background-repeat: no-repeat;
     background-position: center;
+    min-width: 1200px;
 }
 
 .header .headerContainer {
@@ -441,6 +443,7 @@ export default {
     background-image: URL("../../../assets/pcmidbg.png");
     background-repeat: no-repeat;
     background-position: center;
+    min-width: 1200px;
 }
 
 .middle .middleContainer {
@@ -507,6 +510,7 @@ export default {
 .bottom {
     width: 100%;
     height: 1600px;
+    min-width: 1200px;
     background-color: #05000F;
 }
 
